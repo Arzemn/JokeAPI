@@ -26,8 +26,9 @@ switch (strtolower($ROUTE)) {
 
     // Return How Many Jokes We Have
     case "jokecount":
+        $return_array['message']    = array();
         $return_array['message']    = ['count'=>$jokeObject->get_number_jokes()];
-        $return_array['status'] = 200;
+        $return_array['status']     = 200;
         break;
     default:
         break;
