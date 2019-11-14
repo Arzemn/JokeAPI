@@ -13,14 +13,17 @@ $count_response = consume_joke("http://localhost".dirname($_SERVER['SCRIPT_NAME'
    Select Number of Jokes Needed for Laughter Threshold<BR>
     <SELECT name="num">
         <?php
+        if ($count['response']['status'] == 200) {
+            for ($i = 0; $i < $count_response['message']['count']; $i++) {
+                $selected = "";
+                if (($i + 1) == $_GET['num']) {
+                    $selected = "SELECTED";
+                }
+                ?>
 
-        for ($i = 0; $i < $count_response['message']['count'];$i++) {
-            $selected = "";
-            if (($i + 1) == $_GET['num']) { $selected = "SELECTED"; }
-            ?>
-
-                <OPTION VALUE="<?php echo ($i + 1);?>" <?php echo $selected; ?>><?php echo ($i + 1); ?></OPTION>
-            <?php
+                <OPTION VALUE="<?php echo($i + 1); ?>" <?php echo $selected; ?>><?php echo($i + 1); ?></OPTION>
+                <?php
+            }
         }
         ?>
 
